@@ -20,7 +20,8 @@ const citiesFilterReducer = createReducer(initialState, builder => {
                 ...state,
                 ...action.payload
             }
-        })       
+        })
+        
 })
 
 export default citiesFilterReducer

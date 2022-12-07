@@ -16,18 +16,22 @@ const showReducer = createReducer(initialState, (builder)=>{
           }
     })
      .addCase(read.fulfilled, (state, action)=>{
+          console.log(action.payload);
           return {
             ...state,
               shows: action.payload.response,
               success:true
          }
+
      })
-     .addCase(read.rejected, (state, action)=>{ 
+     .addCase(read.rejected, (state, action)=>{
+   
         return {
           ...state,
             shows: [],
             success: false
        }
+
    })
 })
 

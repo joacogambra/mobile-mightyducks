@@ -8,7 +8,7 @@ import commentReducer from './commentReducer'
 import reactionReducer from './reactionReducer';
 
 
-const rootReducer = {
-    hotelsReducer, citiesReducer, citiesFilterReducer, itineraryReducer, showReducer, userReducer, commentReducer, reactionReducer
+const rootReducer ={
+    hotelsReducer, citiesReducer, citiesFilterReducer, itineraryReducer, showReducer,userReducer,commentReducer,reactionReducer
 }
 export default rootReducer

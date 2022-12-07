@@ -1,0 +1,1 @@
+export const BASE_URL ='https://my-itinerary-back-mighty.onrender.com/'
