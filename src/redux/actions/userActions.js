@@ -21,7 +21,7 @@ const keepLog= createAsyncThunk('keepLog', async(token)=>{
      let headers = {headers: {'Authorization': `Bearer ${token}`}}
 
     try{
-        let user= await axios.post(`${BASE_URL}/api/auth/token`,null, headers)
+        let user= await axios.post(`${BASE_URL}api/auth/token`,null, headers)
         
         return {
             success: true,
@@ -40,7 +40,7 @@ const keepLog= createAsyncThunk('keepLog', async(token)=>{
 }) 
 
 const signOut = createAsyncThunk('signOut', async(token)=>{
-    let url = `${BASE_URL}/api/auth/sign-out`
+    let url = `${BASE_URL}api/auth/sign-out`
     let headers = {headers: {'Authorization': `Bearer ${token}`}}
     try{
         let user = await axios.post(url,null,headers)

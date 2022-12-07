@@ -5,7 +5,7 @@ import { BASE_URL } from "../../Api/url";
 const getCities = createAsyncThunk('getCities', async ()=>{
     // let url = `${BASE_URL}/cities`
     try{
-        const respuesta = await axios.get(`${BASE_URL}/cities`)
+        const respuesta = await axios.get(`${BASE_URL}cities`)
         return{
             cities: respuesta.data.response
         }
