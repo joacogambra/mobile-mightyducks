@@ -1,28 +1,30 @@
-import { createReducer } from '@reduxjs/toolkit'
+import {createReducer} from '@reduxjs/toolkit'
 import userActions from '../actions/userActions'
-const { signIn, keepLog, signOut, } = userActions
+ const { signIn, keepLog, signOut, } = userActions
 
-const InitialState = {
-    _id: '',
-    name: '',
-    lastName: '',
-    photo: '',
-    logged: false,
-    token: '',
-    role: ''
+const InitialState={
+_id: '',
+name: '',
+lastName: '',
+photo: '',
+logged: false,
+token: '',
+role: ''
 
 }
 
-const userReducer = createReducer(InitialState,
-    (builder) => {
+const userReducer = createReducer(InitialState, 
+    (builder)=>{
         builder
-            .addCase(signIn.fulfilled, (state, action) => {
-                let success = action.payload.success
-                if (success) {
-                    let user = action.payload.datos
-                    let token = action.payload.token
-                    localStorage.setItem('token', JSON.stringify({ token: { user: token } }))
-                    let newState = {
+            .addCase(signIn.fulfilled, (state,action)=>{
+              let success= action.payload.success
+        
+            
+                if (success){
+                    let user= action.payload.datos
+                    let token= action.payload.token 
+                    localStorage.setItem('token', JSON.stringify({token: {user:token}}))// el obj tipo de propiedad y token
+                    let newState ={
                         ...state,
                         _id: user._id,
                         name: user.name,
@@ -33,18 +35,22 @@ const userReducer = createReducer(InitialState,
                         role: user.role
                     }
                     return newState
-                } else {
-                    let newState = {
+                }else {
+                    let newState={
                         ...state,
-                        message: action.payload.success
+                         message: action.payload.success
                     }
                     return newState
                 }
+
             })
             .addCase(keepLog.fulfilled, (state, action) => {
-                const { success, response } = action.payload
+                const { success,response } = action.payload
                 if (success) {
-                    const user = action.payload.response.user
+                    const user=action.payload.response.user 
+                    
+                  
+                    // let { token } = response
                     let newState = {
                         ...state,
                         name: user.name,
@@ -63,9 +69,9 @@ const userReducer = createReducer(InitialState,
                     return newState
                 }
             })
-            .addCase(signOut.fulfilled, (state, action) => {
-                const { success, response } = action.payload
-                if (success) {
+            .addCase(signOut.fulfilled,(state,action)=>{
+                const { success,response } = action.payload
+                if(success){
                     localStorage.removeItem('token')
                     let newState = {
                         ...state,
@@ -77,7 +83,7 @@ const userReducer = createReducer(InitialState,
                         token: ''
                     }
                     return newState
-                } else {
+                }else{
                     let newState = {
                         ...state,
                         mensaje: response
@@ -85,5 +91,9 @@ const userReducer = createReducer(InitialState,
                     return newState
                 }
             })
+           
+
+
+
     })
-export default userReducer
+    export default userReducer
