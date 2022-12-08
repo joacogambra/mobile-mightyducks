@@ -43,13 +43,16 @@ export default function AllHotels() {
         <>
           <View style={styles.input}>
             <TextInput
-              style={{ height: 20 }}
+              style={{ height: 20, color: 'black' }}
               placeholder="Search an hotel"
               onChangeText={filtrar}
-
               defaultValue={text}
             />
+
+          </View>
+          <View style={styles.order}>
             <Picker
+              style={{ textAlign: 'center' }}
               selectedValue={order}
               onValueChange={(itemValue) =>
                 dispatch(filter({ text: text, order: itemValue }))
@@ -57,7 +60,6 @@ export default function AllHotels() {
               <Picker.Item label="Desc" value="desc" />
               <Picker.Item label="Asc" value="asc" />
             </Picker>
-
           </View>
 
 
@@ -79,6 +81,17 @@ export default function AllHotels() {
         </Pressable>
 
       }
+      ListEmptyComponent={() => (
+        hotels.length === 0 ? (<View>
+          <ImageBackground source={require('../../assets/lost.png')}
+            style={styles.hotelsContainer}>
+            <View style={styles.content}>
+              <Text style={styles.text}> Not Matched!</Text>
+            </View>
+          </ImageBackground>
+        </View>) : (hotels)
+      )}
+
     />
 
   )
@@ -102,7 +115,6 @@ const styles = StyleSheet.create({
   contenedor: {
     width: '100%',
     height: 250,
-
     justifyContent: 'center'
   },
   pressable: {
@@ -134,22 +146,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center'
   },
-  displayButton: {
-    width: '100%',
-    flexDirection: "row",
-    justifyContent: 'center',
-    alignItems: 'center',
+  order: {
+    height: 35,
+    width: '30%',
+    backgroundColor: 'white',
+    marginBottom: 30,
+    borderRadius: 30,
+    textAlign: 'auto',
 
-  },
-  button: {
-    paddingHorizontal: 8,
-    paddingVertical: 6,
-    borderRadius: 4,
-    backgroundColor: "#dda0dd",
-    alignSelf: "flex-start",
-    marginHorizontal: 5,
-    marginBottom: 6,
-    minWidth: "30%",
-    textAlign: "center",
   }
 })
