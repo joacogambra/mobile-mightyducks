@@ -31,3 +31,4 @@ export default function Bottom() {
       <StackNav.Screen name="My Reactions" component={Reactions} />
     </StackNav.Navigator>
   )
+}
