@@ -28,7 +28,7 @@ const getHotels = createAsyncThunk('gethotels', async () => {
 const filter = createAsyncThunk('filter', async (filtros) => {
   let { text, order } = filtros
   // if (filtros === '') return { hotels: [] }
-  console.log(order);
+
 
   try {
     let respuesta = await axios.get(`${BASE_URL}api/hotels/?order=${order}&name=${text}`)

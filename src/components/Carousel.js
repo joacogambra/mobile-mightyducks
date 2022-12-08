@@ -1,17 +1,15 @@
 import React from 'react'
 import citiesAction from '../redux/actions/citiesAction'
-import { useEffect, useState } from 'react'
-import hotelsActions from '../redux/actions/hotelsActions'
+import { useEffect } from 'react'
+// import hotelsActions from '../redux/actions/hotelsActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { Image, View, StyleSheet, ImageBackground, ScrollView, Text, Dimensions, FlatList } from 'react-native'
 
 
 export default function carousel() {
-  let [numero, setNumero] = useState(0)
-  let [id, setId] = useState()
+
   const { getCities } = citiesAction
   let city = useSelector(store => store.citiesReducer.cities)
-  let { initial } = useSelector(state => state.hotelsReducer)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -57,7 +55,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 20,
     marginBottom: 15,
-    margin: 3,
+    margin: 5,
   }, text: {
     paddingTop: 1,
     color: 'white',
