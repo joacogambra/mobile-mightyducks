@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 import hotelsActions from '../redux/actions/hotelsActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { Image, View, StyleSheet, ImageBackground, ScrollView, Text, Pressable, FlatList, TextInput } from 'react-native'
-
+import { Picker } from '@react-native-picker/picker'
 
 export default function AllHotels() {
 
@@ -40,15 +40,28 @@ export default function AllHotels() {
       ItemSeparatorComponent={<View style={{ margin: 10 }} />}
       contentContainerStyle={styles.container}
       ListHeaderComponent={
-        <View style={styles.input}>
-          <TextInput
-            style={{ height: 20 }}
-            placeholder="Search an hotel"
-            onChangeText={filtrar}
+        <>
+          <View style={styles.input}>
+            <TextInput
+              style={{ height: 20 }}
+              placeholder="Search an hotel"
+              onChangeText={filtrar}
 
-            defaultValue={text}
-          />
-        </View>
+              defaultValue={text}
+            />
+            <Picker
+              selectedValue={order}
+              onValueChange={(itemValue) =>
+                dispatch(filter({ text: text, order: itemValue }))
+              }>
+              <Picker.Item label="Desc" value="desc" />
+              <Picker.Item label="Asc" value="asc" />
+            </Picker>
+
+          </View>
+
+
+        </>
       }
       renderItem={({ item }) =>
 
@@ -84,6 +97,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#dda0dd',
     paddingHorizontal: 20,
+    paddingBottom: 20,
   },
   contenedor: {
     width: '100%',

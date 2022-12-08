@@ -104,7 +104,7 @@ export default function SignUp() {
 
 const styles = StyleSheet.create({
     backgroundImage: {
-        opacity: 0.7,
+        // opacity: 0.7,
         width: "100%",
         height: "100%"
     },
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     },
     viewInput: {
         opacity: 1,
-        borderRadius: 6,
+        borderRadius: 48,
         width: 280,
         height: 48,
         marginBottom: 12,
@@ -137,6 +137,6 @@ const styles = StyleSheet.create({
         marginLeft: 14,
         borderBottomColor: '#303030',
         flex: 1,
-        borderRadius: 6,
+        borderRadius: 48,
     }
 })

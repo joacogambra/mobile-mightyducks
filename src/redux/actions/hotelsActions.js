@@ -32,7 +32,7 @@ const filter = createAsyncThunk('filter', async (filtros) => {
 
   try {
     let respuesta = await axios.get(`${BASE_URL}api/hotels/?order=${order}&name=${text}`)
-    console.log(respuesta.data)
+
     if (respuesta.data.success) {
       return {
         success: true,
