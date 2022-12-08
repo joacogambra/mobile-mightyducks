@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, ScrollView, TextInput } from 'react-native'
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, ScrollView, TextInput, Alert } from 'react-native'
 import { BASE_URL } from '../Api/url'
 import axios from 'axios'
 
@@ -29,10 +29,9 @@ export default function SignUp() {
     }
 
     return (
-        // <ScrollView style={{ flex: 1 }} contentContainerStyle={{ justifyContent: 'center', alignItems: 'center', height: "100%" }}>
         <ImageBackground source={backgroundImage} resizeMode='cover' style={styles.backgroundImage}>
             <View style={styles.container}>
-                <Text style={{ fontWeight: 'bold', paddingVertical: '2%', paddingHorizontal: '6%', margin: '5%', fontSize: 24 }}>Sign Up</Text>
+                <Text style={{ fontWeight: 'bold', paddingVertical: '2%', paddingHorizontal: '6%', margin: '5%', fontSize: 24 }}>Resgister</Text>
                 <View onSubmit={registration} ref={signup} >
                     <View style={styles.viewInput}>
                         <TextInput
@@ -48,7 +47,7 @@ export default function SignUp() {
                             value={lastName}
                             ref={lastName}
                             label='lastName'
-                            placeholder='lastName' />
+                            placeholder='Last name' />
                     </View>
                     <View style={styles.viewInput}>
                         <TextInput
@@ -56,7 +55,7 @@ export default function SignUp() {
                             value={age}
                             ref={age}
                             label='age'
-                            placeholder='age'
+                            placeholder='Age'
                             keyboardType='numeric' />
                     </View>
                     <View style={styles.viewInput}>
@@ -65,7 +64,7 @@ export default function SignUp() {
                             value={photo}
                             ref={photo}
                             label='photo'
-                            placeholder='photo'
+                            placeholder='Photo'
                             keyboardType='url' />
                     </View>
                     <View style={styles.viewInput}>
@@ -74,7 +73,7 @@ export default function SignUp() {
                             value={email}
                             ref={email}
                             label='email'
-                            placeholder='email'
+                            placeholder='Email'
                             keyboardType='email-address'/>
                     </View>
                     <View style={styles.viewInput}>
@@ -83,14 +82,18 @@ export default function SignUp() {
                             value={password}
                             ref={password}
                             label='password'
-                            placeholder='password'/>
+                            placeholder='Password'
+                            secureTextEntry/>
                     </View>
                 </View>
                 <TouchableOpacity
+                onPress={()=>{Alert.alert('Welcome !','Successfully registered',[
+                    {text:'OKEY', onPress:'', style:'default'}
+                ])}}           
                     style={{
                         width: '60%',
                         alignItems: 'center',
-                        backgroundColor: 'morado medio',
+                        backgroundColor: 'white',
                         borderRadius: 6,
                         marginBottom: 24
                     }}>
@@ -98,13 +101,11 @@ export default function SignUp() {
                 </TouchableOpacity>
             </View>
         </ImageBackground>
-        // </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     backgroundImage: {
-        // opacity: 0.7,
         width: "100%",
         height: "100%"
     },
@@ -112,10 +113,9 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        opacity: 1,
     },
     viewInput: {
-        opacity: 1,
+        backgroundColor: 'white',
         borderRadius: 48,
         width: 280,
         height: 48,

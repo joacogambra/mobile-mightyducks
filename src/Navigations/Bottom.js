@@ -6,6 +6,7 @@ import Home from '../Screens/Home'
 import Hotels from '../Screens/Hotels'
 import SignUp from '../Screens/SignUp'
 import Cities from "../Screens/Cities";
+import Reactions from '../Screens/Reactions'
 
 
 const StackNav = createBottomTabNavigator();
@@ -27,6 +28,6 @@ export default function Bottom() {
         tabBarIcon: () => (<Image source={require('../../assets/city.png')} style={{ width: 25, height: 25 }}></Image>)
       }} />
       <StackNav.Screen name="SignUp" component={SignUp} />
+      <StackNav.Screen name="My Reactions" component={Reactions} />
     </StackNav.Navigator>
   )
-}
