@@ -7,6 +7,7 @@ import citiesAction from '../redux/actions/citiesAction'
 import { BASE_URL } from '../Api/url'
 
 export default function Cities() {
+    const backgroundImage = { uri: 'https://a.travel-assets.com/findyours-php/viewfinder/images/res70/501000/501690-barceloneta-beach.jpg' }
     const {getCities, getFiltering} = citiesAction 
     let cities = useSelector(store => store.citiesReducer.cities)
     // const filter = useSelector(state => state.citiesFilterReducer)
@@ -16,6 +17,8 @@ export default function Cities() {
     useEffect(() => {
         dispatch(getCities())     
     }, [])
+
+    
 
     return (
         <ImageBackground source={backgroundImage} resizeMode='cover' style={styles.backgroundImage}>
