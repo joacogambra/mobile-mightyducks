@@ -88,7 +88,7 @@ export default function SignUp() {
                 </View>
                 <TouchableOpacity
                 onPress={()=>{Alert.alert('Welcome !','Successfully registered',[
-                    {text:'OKEY', onPress:'', style:'default'}
+                    {text:'OKEY', onPress:()=> navigation.navigate('Home'), style:'default'}
                 ])}}           
                     style={{
                         width: '60%',
