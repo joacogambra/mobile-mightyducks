@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   secundaryText: {
-    color: '#9b59b6',
+    color: '#c71585',
     fontWeight: 'bolder',
     fontSize: 20,
     textAlign: 'center'
