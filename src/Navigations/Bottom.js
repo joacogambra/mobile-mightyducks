@@ -36,7 +36,7 @@ export default function Bottom() {
         tabBarIcon: () => (<Image source={require('../../assets/city.png')} style={{ width: 25, height: 25 }}></Image>)
       }} />
       <StackNav.Screen name="SignUp" component={SignUp} />
-      <StackNav.Screen name="details" component={Hotel} />
+
 
     </StackNav.Navigator>
   )
