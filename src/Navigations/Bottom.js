@@ -18,7 +18,7 @@ export default function Bottom() {
 
 
   let { name, photo, logged } = useSelector(state => state.userReducer)
-  console.log(logged)
+
   return (
     <StackNav.Navigator>
       <StackNav.Screen name="Home" component={Home} options={{

@@ -15,13 +15,13 @@ export default function Shows({ navigation, route }) {
     let { getComments } = commentActions
     let comments = useSelector(state => state.commentReducer)
     const dispatch = useDispatch()
-
+    // console.log(id)
     useEffect(() => {
 
         dispatch(allShows(hotelId))
 
     }, [hotelId])
-    dispatch(getComments(id))
+    // dispatch(getComments(id))
 
     console.log(comments)
 
