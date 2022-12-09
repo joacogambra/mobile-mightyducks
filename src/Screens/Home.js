@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, Image, ImageBackground, Pressable } from 'react
 import React from 'react'
 import Carousel from '../components/Carousel'
 
-export default function Home() {
+export default function Home({ navigation }) {
   const backgroundImage = { uri: 'https://a.travel-assets.com/findyours-php/viewfinder/images/res70/501000/501690-barceloneta-beach.jpg' }
 
   return (
@@ -14,11 +14,14 @@ export default function Home() {
         </Text>
         <View style={styles.displayButton}>
 
-          <Pressable style={styles.button}>
+          <Pressable style={styles.button}
+            onPress={() => navigation.navigate('Hotels')}>
+
             <Text style={styles.text}>Hotels</Text>
           </Pressable>
 
-          <Pressable style={styles.button}>
+          <Pressable style={styles.button}
+            onPress={() => navigation.navigate('Cities')}>
             <Text style={styles.text}>Cities</Text>
           </Pressable>
         </View>

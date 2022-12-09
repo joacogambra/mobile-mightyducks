@@ -5,13 +5,20 @@ import { Image } from 'react-native'
 import Home from '../Screens/Home'
 import SignUp from '../Screens/SignUp'
 import Cities from "../Screens/Cities";
-import Hotel from '../Screens/Hotel'
-import HotelsStack from "./HotelsStack";
+import HotelsStack from "./HotelsStack"
+import { useSelector } from 'react-redux';
 
-const StackNav = createBottomTabNavigator()
+import UserStack from "./UserStack";
+
+
 
 
 export default function Bottom() {
+  const StackNav = createBottomTabNavigator()
+
+
+  let { name, photo, logged } = useSelector(state => state.userReducer)
+  console.log(logged)
   return (
     <StackNav.Navigator>
       <StackNav.Screen name="Home" component={Home} options={{
@@ -35,7 +42,20 @@ export default function Bottom() {
         tabBarLabel: 'Cities',
         tabBarIcon: () => (<Image source={require('../../assets/city.png')} style={{ width: 25, height: 25 }}></Image>)
       }} />
-      <StackNav.Screen name="SignUp" component={SignUp} />
+      <StackNav.Screen name="Sign Up" component={SignUp} options={{
+        headerStyle: {
+          backgroundColor: 'rgba(197, 68, 186, 0.59)',
+        },
+        tabBarLabel: 'Sign Up',
+        tabBarIcon: () => (<Image source={require('../../assets/register.png')} style={{ width: 25, height: 25 }}></Image>)
+      }} />
+      <StackNav.Screen name={logged ? ('Profile') : ('Log In')} component={UserStack} options={{
+        headerStyle: {
+          backgroundColor: 'rgba(197, 68, 186, 0.59)',
+        },
+        // tabBarLabel: 'Log In',
+        tabBarIcon: () => (<Image source={photo ? { uri: photo } : (require('../../assets/login.png'))} style={{ width: 25, height: 25 }}></Image>)
+      }} />
 
 
     </StackNav.Navigator>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, ScrollView, Image, TouchableOpacity, ImageBackground, StyleSheet } from "react-native"
+import { View, Text, ScrollView, Image, TouchableOpacity, StyleSheet } from "react-native"
 import { useEffect } from "react"
 import axios from 'axios'
 import BASE_URL from '../Api/url'
@@ -20,13 +20,14 @@ export default function Hotel({ navigation, route }) {
 
 
 
+
     return (
-        <View style={styles.container}>
+        hotel && (<View style={styles.container}>
             <View >
                 <Text style={styles.text}>{hotel.name}</Text>
             </View>
             <Image
-                source={{ uri: hotel.photo[1] }}
+                source={{ uri: hotel.photo[0] }}
                 style={styles.hotelsContainer}
                 // resizeMode='cover'
                 key={hotel._id}>
@@ -37,11 +38,11 @@ export default function Hotel({ navigation, route }) {
             </View>
             <TouchableOpacity
                 style={styles.show}
-            // onPress={() => navigation.navigate('Shows',{id:hotel_id})}
+                onPress={() => navigation.navigate('Shows', { id: hotel._id })}
             >
                 <Text style={styles.text}>View Shows</Text>
             </TouchableOpacity>
-        </View>
+        </View>)
     )
 }
 

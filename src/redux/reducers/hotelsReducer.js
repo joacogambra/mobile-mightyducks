@@ -11,7 +11,7 @@ const initialState = {
   myHotels: [],
   success: true,
   initial: true,
-  hotel: []
+  hotel: null
 
 }
 const hotelsReducer = createReducer(initialState,
