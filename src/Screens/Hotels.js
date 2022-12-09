@@ -5,7 +5,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Image, View, StyleSheet, ImageBackground, ScrollView, Text, Pressable, FlatList, TextInput } from 'react-native'
 import { Picker } from '@react-native-picker/picker'
 
-export default function AllHotels() {
+
+
+export default function AllHotels({ navigation }) {
 
   const { getHotels, filter } = hotelsActions
   let hotels = useSelector(state => state.hotelsReducer.hotels)
@@ -67,7 +69,8 @@ export default function AllHotels() {
       }
       renderItem={({ item }) =>
 
-        <Pressable style={styles.pressable} >
+        hotels && (<Pressable style={styles.pressable}
+          onPress={() => navigation.navigate('Hotel Selected', { id: item._id })} >
           <ImageBackground
             source={{ uri: item.photo[0] }}
             style={styles.hotelsContainer}
@@ -76,9 +79,11 @@ export default function AllHotels() {
             <View style={styles.content}>
               <Text style={styles.text}>{item.name}</Text>
               <Text style={styles.text}>Capacity: {item.capacity}</Text>
+              <Text style={styles.text}> See more..</Text>
             </View>
           </ImageBackground>
-        </Pressable>
+
+        </Pressable>)
 
       }
       ListEmptyComponent={() => (

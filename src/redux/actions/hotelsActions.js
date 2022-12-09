@@ -24,6 +24,27 @@ const getHotels = createAsyncThunk('gethotels', async () => {
   }
 
 })
+const getOneHotel = createAsyncThunk('getOnehotels', async (id) => {
+
+  try {
+    let respuesta = await axios.get(`${BASE_URL}api/hotels/${id}`)
+    let hotel = respuesta.data.response
+
+
+    return {
+      succes: true,
+      hotel
+    }
+  }
+  catch (error) {
+
+    return {
+      success: false,
+      response: error.response.data.response
+    }
+  }
+
+})
 
 const filter = createAsyncThunk('filter', async (filtros) => {
   let { text, order } = filtros
@@ -85,6 +106,7 @@ const hotelsActions = {
   getHotels,
   filter,
   deleteHotel,
+  getOneHotel
 
 
 
