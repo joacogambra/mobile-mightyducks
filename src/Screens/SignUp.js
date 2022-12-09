@@ -74,7 +74,7 @@ export default function SignUp() {
                             ref={email}
                             label='email'
                             placeholder='Email'
-                            keyboardType='email-address'/>
+                            keyboardType='email-address' />
                     </View>
                     <View style={styles.viewInput}>
                         <TextInput
@@ -83,13 +83,15 @@ export default function SignUp() {
                             ref={password}
                             label='password'
                             placeholder='Password'
-                            secureTextEntry/>
+                            secureTextEntry />
                     </View>
                 </View>
                 <TouchableOpacity
-                onPress={()=>{Alert.alert('Welcome !','Successfully registered',[
-                    {text:'OKEY', onPress:'', style:'default'}
-                ])}}           
+                    onPress={() => {
+                        Alert.alert('Welcome !', 'Successfully registered', [
+                            { text: 'OKEY', onPress: '', style: 'default' }
+                        ])
+                    }}
                     style={{
                         width: '60%',
                         alignItems: 'center',
