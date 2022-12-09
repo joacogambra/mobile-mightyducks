@@ -1,7 +1,9 @@
 import React from 'react'
 import { View, Text, Image, Button, ImageBackground, StyleSheet, Pressable } from 'react-native'
+import { useNavigation} from '@react-navigation/native'
 
 export default function CardCities({ name, photo, continent, id, userId }) {
+  let navigation = useNavigation()
   return (
     <Pressable style={styles.pressable}>
       <ImageBackground style={styles.backgroundCard} source={{ uri: photo }}>
@@ -9,7 +11,7 @@ export default function CardCities({ name, photo, continent, id, userId }) {
           <Text style={{ color: 'white', textAlign: 'center', fontWeight:"bold" }}>{name}</Text>
           <Text style={{ color: 'white', textAlign: 'center', fontWeight:"bold" }}>Continent: {continent}</Text>
         </View>
-        <Button title='More'></Button>
+        <Button onPress={() => navigation.navigate('Itineraries')} title='More'></Button>
       </ImageBackground>  
     </Pressable>    
   )
