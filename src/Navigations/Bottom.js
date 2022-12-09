@@ -10,9 +10,8 @@ import { useSelector } from 'react-redux';
 
 import UserStack from "./UserStack";
 import Reactions from '../Screens/Reactions'
-
-
-
+import CityStack from "./CityStack";
+import ProfileStack from "./ProfileStack";
 
 export default function Bottom() {
   const StackNav = createBottomTabNavigator()
@@ -36,7 +35,7 @@ export default function Bottom() {
         tabBarLabel: 'Hotels',
         tabBarIcon: () => (<Image source={require('../../assets/hotel.png')} style={{ width: 25, height: 25 }}></Image>)
       }} />
-      <StackNav.Screen name="Cities" component={Cities} options={{
+      <StackNav.Screen name="Cities" component={CityStack} options={{
         headerStyle: {
           backgroundColor: 'rgba(197, 68, 186, 0.59)',
         },
@@ -50,7 +49,7 @@ export default function Bottom() {
         tabBarLabel: 'Sign Up',
         tabBarIcon: () => (<Image source={require('../../assets/register.png')} style={{ width: 25, height: 25 }}></Image>)
       }} />
-      <StackNav.Screen name={logged ? ('Profile') : ('Log In')} component={UserStack} options={{
+      <StackNav.Screen name={logged ? ('Profile') : ('Log In')} component={ProfileStack} options={{
         headerStyle: {
           backgroundColor: 'rgba(197, 68, 186, 0.59)',
         },
