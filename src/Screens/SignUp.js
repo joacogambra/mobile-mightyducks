@@ -2,9 +2,12 @@ import React from 'react'
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, ScrollView, TextInput, Alert } from 'react-native'
 import { BASE_URL } from '../Api/url'
 import axios from 'axios'
+import { useNavigation, useRoute } from '@react-navigation/native'
 
 export default function SignUp() {
     const backgroundImage = { uri: 'https://a.travel-assets.com/findyours-php/viewfinder/images/res70/501000/501690-barceloneta-beach.jpg' }
+    let navigation = useNavigation()
+    
     let name = React.useRef()
     let lastName = React.useRef()
     let age = React.useRef()
