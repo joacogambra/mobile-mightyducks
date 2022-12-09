@@ -12,9 +12,11 @@ export default function Profile() {
     let _id = '636d394853e918bedbd136e3'
     
     return (
+        <ScrollView style={styles.scroll}>
         <ImageBackground source={backgroundImage} resizeMode='cover' style={styles.backgroundImage}>
             <MyProfile name={name} lastName={lastName} photo={photo} age={age} email={email} id={_id} key={_id} />
         </ImageBackground>
+        </ScrollView>
     )
 }
 
@@ -24,5 +26,10 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%",     
     },
-
+    scroll:{
+        flex: 1,
+        width: "100%",
+        height: "100%", 
+        flexGrow:1,
+    }
 })
