@@ -23,7 +23,7 @@ export default function Shows({ navigation, route }) {
     }, [hotelId])
     // dispatch(getComments(id))
 
-    console.log(comments)
+
 
     return (
         <FlatList
@@ -85,12 +85,14 @@ export default function Shows({ navigation, route }) {
             }
             ListEmptyComponent={() => (
                 all?.length === 0 ? (<View>
-                    <ImageBackground source={require('../../assets/lost.png')}
-                        style={styles.hotelsContainer}>
-                        <View style={styles.content}>
-                            <Text style={styles.text}> No shows for this Hotel yet!</Text>
-                        </View>
-                    </ImageBackground>
+                    <View style={styles.container}>
+                        <ImageBackground source={require('../../assets/lost.png')}
+                            style={styles.hotelsContainer}>
+                            <View style={styles.content}>
+                                <Text style={styles.text}> No shows for this Hotel yet!</Text>
+                            </View>
+                        </ImageBackground>
+                    </View>
                 </View>) : (all)
             )}
 
