@@ -24,7 +24,7 @@ export default function AllHotels({ navigation }) {
 
   function filtrar(e) {
     // setWord(search.current.value)
-    console.log(e)
+
     dispatch(filter({
 
       text: e,

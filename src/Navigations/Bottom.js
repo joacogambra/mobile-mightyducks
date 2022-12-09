@@ -49,7 +49,7 @@ export default function Bottom() {
         tabBarLabel: 'Sign Up',
         tabBarIcon: () => (<Image source={require('../../assets/register.png')} style={{ width: 25, height: 25 }}></Image>)
       }} />
-      <StackNav.Screen name={logged ? ('Profile') : ('Log In')} component={ProfileStack} options={{
+      <StackNav.Screen name={logged ? `${name}` : ('Log In')} component={UserStack} options={{
         headerStyle: {
           backgroundColor: 'rgba(197, 68, 186, 0.59)',
         },
@@ -58,7 +58,7 @@ export default function Bottom() {
       }} />
 
 
-      <StackNav.Screen name="My Reactions" component={Reactions} />
+      <StackNav.Screen name="Profile" component={ProfileStack} />
     </StackNav.Navigator>
   )
 }

@@ -1,54 +1,44 @@
 import React from 'react'
 import { StyleSheet, View, Alert, TextInput, Button, Text, Pressable } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux'
-import userActions from '../redux/actions/userActions'
 import axios from 'axios'
 import { BASE_URL } from "../Api/url";
 import { useState, useEffect } from 'react';
 
-export default function SignIn({ navigation }) {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+export default function EditProfile() {
+    const [nombre, setNombre] = useState("")
+    const [apellido, setApellido] = useState('')
+    const [edad, setEdad] = useState('')
     let dispatch = useDispatch()
-    let { signIn } = userActions
-    let { token } = useSelector(state => state.userReducer)
-    let { keepLog } = userActions
+    let { _id, name, lastName, age, photo, token } = useSelector(state => state.userReducer)
 
+    let handleSubmit = (e) => {
 
-    useEffect(() => {
-        // AsyncStorage.setItem('user', JSON.stringify({ token: { user: token } }))
-        // let token = JSON.parse(AsyncStorage.getItem('token'))
-        if (token) {
-            dispatch(keepLog(token))
+        let form = {
+            name: nombre || name,
+            photo: photo,
+            lastName: apellido || lastName,
+            age: edad || age,
         }
-        // eslint-disable-next-line
-    }, [])
+        let headers = { headers: { Authorization: `Bearer ${token}` } }
 
-    async function handleSubmit() {
-        const login = {
-            email: email,
-            password: password,
-        }
-
-        axios.post(`${BASE_URL}api/auth/sign-in`, login)
+        axios.patch(`${BASE_URL}api/auth/me/${_id}`, form, headers)
             .then(response => {
-
-                dispatch(signIn(response.data))
                 Alert.alert(
                     ` ${response.data.message}`,
                 )
-            }
-            )
+                console.log(response);
+            })
+
             .catch(error => {
-                console.log(error.response.data.message);
+                console.log(error);
+                Alert.alert(
+                    ` ${error.data.message}`,
+                )
 
             })
 
-
-
     }
-
-
 
 
 
@@ -57,30 +47,34 @@ export default function SignIn({ navigation }) {
 
 
             <View style={styles.form}>
-                <Text style={styles.titleform}>Welcome Back!</Text>
+                <Text style={styles.titleform}>Edit your profile:</Text>
+                <Text style={styles.text}>(just complete what you want yo modify)</Text>
+                <TextInput
+                    style={styles.input}
+
+                    //  value={name}
+                    placeholder='Name'
+                    onChangeText={(name) => setNombre(name)} />
 
                 <TextInput
                     style={styles.input}
-                    isRequired
-                    value={email}
-                    placeholder="Email"
-                    onChangeText={(mail) => setEmail(mail)} />
-
+                    // value={lastName}
+                    placeholder='Last Name'
+                    onChangeText={(lastName) => setApellido(lastName)} />
                 <TextInput
                     style={styles.input}
-                    isRequired
-                    value={password}
-                    placeholder="Password"
-                    onChangeText={(pass) => setPassword(pass)}
-                    secureTextEntry />
+                    // value={age}
+                    placeholder='Age'
+                    onChangeText={(age) => setEdad(age)} />
+
                 <Pressable onPress={() => handleSubmit()} style={styles.show}>
 
-                    <Text style={styles.text} >Log In</Text>
+                    <Text style={styles.text} >Send!</Text>
 
                 </Pressable>
 
             </View>
-            <Text style={styles.register} onPress={() => navigation.navigate('SignUp')}>You still don't have an account? go to SignUp!</Text>
+
         </View>
 
 
