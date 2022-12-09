@@ -9,6 +9,7 @@ import HotelsStack from "./HotelsStack"
 import { useSelector } from 'react-redux';
 
 import UserStack from "./UserStack";
+import Reactions from '../Screens/Reactions'
 
 
 
@@ -58,6 +59,7 @@ export default function Bottom() {
       }} />
 
 
+      <StackNav.Screen name="My Reactions" component={Reactions} />
     </StackNav.Navigator>
   )
 }
