@@ -19,11 +19,11 @@ const createShow = createAsyncThunk('createShow', async (data, body) => {
   const { show } = body
   let baseurl = `${BASE_URL}api/shows/`
   const { id } = data
-  console.log(body);
+
 
   try {
     const res = await axios.post(baseurl + id, show)
-    console.log(res);
+
     return {
       success: true,
 

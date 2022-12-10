@@ -65,7 +65,7 @@ const hotelsReducer = createReducer(initialState,
 
       .addCase(filter.fulfilled, (state, action) => {
 
-        console.log(action.payload.response.order)
+
         if (action.payload.success === true) {
           let newState = {
             ...state,
@@ -89,7 +89,7 @@ const hotelsReducer = createReducer(initialState,
       })
 
       .addCase(filter.rejected, (state, action) => {
-        console.log(action)
+
 
         return {
           ...state,
