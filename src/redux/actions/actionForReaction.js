@@ -26,7 +26,7 @@ const reactions = createAsyncThunk('reactions', async(data)=>{
 const getReactions = createAsyncThunk('getReactions', async({key, headers})=>{
     
     try{
-         let res = await axios.get(`${BASE_URL}/reactions/?itineraryId=${key}`,headers)
+         let res = await axios.get(`${BASE_URL}reactions/?itineraryId=${key}`,headers)
         return{
             success:true,
             response:res.data.response,    

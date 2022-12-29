@@ -56,9 +56,6 @@ export default function Bottom() {
         // tabBarLabel: 'Log In',
         tabBarIcon: () => (<Image source={photo ? { uri: photo } : (require('../../assets/login.png'))} style={{ width: 25, height: 25 }}></Image>)
       }} />
-
-
-      <StackNav.Screen name="Profile" component={ProfileStack} />
     </StackNav.Navigator>
   )
 }
