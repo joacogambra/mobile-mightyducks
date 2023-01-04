@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "mobile-mightyducks",
+    "slug": "mobile-mightyducks",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/travel.gif",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/travel.gif",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/travel.gif",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./assets/travel.gif"
+    }
+  }
+}
